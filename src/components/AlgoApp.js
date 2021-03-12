@@ -2,7 +2,17 @@ import './AlgoApp.css';
 import React from 'react';
 import QuestionsMenu from './QuestionsMenu';
 import ViewMenu from './ViewMenu';
+import PrismCode from './PrismCode';
 
+
+const code = `
+def fib_iterative(n):
+    a, b = 0, 1
+    while n > 0:
+        a, b = b, a + b
+        n -= 1
+    return a
+`
 
 class AlgoApp extends React.Component {
     state = { 
@@ -78,6 +88,12 @@ class AlgoApp extends React.Component {
                         current = {this.state.currentView}
                         views = {this.state.views}
                         onViewSelect = {this.onViewSelect}
+                    />
+                </div>
+                <div className="ui segment">
+                    <PrismCode
+                        code={code}
+                        language='python'
                     />
                 </div>
             </div>
