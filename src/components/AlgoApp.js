@@ -128,7 +128,7 @@ class AlgoApp extends React.Component {
                                     </div>
                                     <div className="column">
                                         <div className="ui segment">
-                                            Array ---   DP  --- Medium
+                                            Array ---   DP  --- Mediumd
                                         </div>
                                     </div>
                                 </div>
