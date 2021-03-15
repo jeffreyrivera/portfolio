@@ -1,6 +1,33 @@
+
+.ui.segment {
+    font-size: 1.2rem;
+}
+.ui.segment.question{
+    border-radius: 5px;
+    margin-top: 0px;
+}
+.thirteen.wide.two.column.grid.question {
+    padding-right: 0px;
+}
+.ui.segment.code {
+    padding: 0px;
+    margin: 0px;
+}
+.five.wide.column.solutions {
+    margin-top: 0.5em;
+    padding-left: 0px;
+    min-height: 450px;
+}
 .ui.pointing.menu.algo {
     margin: 0;
 }
 .ui.text.menu.algo {
     margin: 0;
 }
+.questionDisplay {
+    margin-bottom: 1em;
+}
+.codeDisplay pre {
+    min-height: 450px;
+}
+    

@@ -6,7 +6,7 @@ const QuestionsCategory = ( {category, current, onCategorySelect} ) => {
     }
     return (
         <div className={`${returnCurrent()}item`} onClick={() => onCategorySelect(category)}>
-            {category}
+            <h4>{category}</h4>
         </div>
     );
 };

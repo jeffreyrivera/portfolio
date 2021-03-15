@@ -3,41 +3,58 @@ import React from 'react';
 import QuestionsMenu from './QuestionsMenu';
 import ViewMenu from './ViewMenu';
 import CodeDisplay from './CodeDisplay'
+import QuestionList from './QuestionList';
+import QuestionDisplay from './QuestionDisplay';
+
+
 
 
 
 class AlgoApp extends React.Component {
     state = { 
-        questions: [], categories: [], categorySelected: null, source: './algo.md',
+        questions: [], categories: [], categorySelected: null, 
+        questionSelected: null, source: './algo.md',
         views: ['Single','Grid','Most Popular'], currentView: 'Single',
         post: 'algo',
     }
 
     componentDidMount(){
-        this.setTempData();
+        this.setCategoryData();
+        this.setQuestionData('array');
     }
 
-    setTempData = () => {
-        const questionsArray = [
-            {question_id: 1, 
-                title: "Fibonacci Series", description: "You are required to return the nth element (n) and print it out to the console from Fibonacci series.",
-            },
-            {question_id: 2, questionTitle: "Second Question", description: "What are Design Patterns Seriously ?"},
-            {question_id: 3, questionTitle: "Thirst Question", description: "What are Design Patterns No Way?"}
-        ];
-        const categoriesAPI = [{id: 1,value:'Array'}, {id: 2,value:'Sorting'}, {id: 3,value:'DP'}, {id: 4,value:'Recursion'}, {id: 5,value:'Tree'}];
+    setCategoryData = () => {
 
+        const categoriesAPI = [{id: 1, value:'Array'}, {id: 2,value:'Sorting'}, {id: 3,value:'DP'}, {id: 4,value:'Recursion'}, {id: 5,value:'Tree'}];
         this.setState({
-            questions: questionsArray,
             categories: categoriesAPI,
             categorySelected: categoriesAPI[0]['value']
         });
-        //Fibonacci Series
-        //You are required to return the nth element (n) and print it out to the console from Fibonacci series.
+        
+    };
+    setQuestionData = (term) =>{
+        //TODO questions API request Vr. 2
+
+        const response = require(`../data/questions/${term}Questions.json`);
+        console.log(response);
+        console.log(response[0]);
+        this.setState({
+            questions: response,
+            questionSelected: response[0]
+        });
+    };
+    onQuestionSelect = (question) => {
+        //console.log('from App Question is : ', question);
+        if (question !== this.state.questionSelected){
+            this.setState( { questionSelected: question });
+        } else {
+            console.log('Same Question Selected');
+        }
+        //TODO load appropiate questions array from API and update current questions state
     };
 
     onCategorySelect = (category) => {
-        console.log('from App Category is : ', category);
+        //console.log('from App Category is : ', category);
         if (category !== this.state.categorySelected){
             this.setState( { categorySelected: category });
         } else {
@@ -45,11 +62,31 @@ class AlgoApp extends React.Component {
         }
         //TODO load appropiate questions array from API and update current questions state
     };
+    onQuestionView = (view) => {
+        if (view !== this.state.currentView){
+            this.setState({currentView: view});
+        } 
+    };
+
     onViewSelect = (view) => {
         if (view !== this.state.currentView){
             this.setState({currentView: view});
         } 
     };
+
+    //Helper Function
+    renderContent = () => {
+        if ( this.state.questionSelected == null) {
+            return <div>Loading....... </div>;
+        } else {
+            return (
+                <QuestionDisplay
+                    question={this.state.questionSelected}
+                />
+            );
+        }
+    }
+    
 
     render() {
         return (
@@ -66,60 +103,45 @@ class AlgoApp extends React.Component {
                         onViewSelect = {this.onViewSelect}
                     />
                 </div>
-                <div className="ui container">
+                <div className="ui container grid">
                     <div className="ui stackable two column grid">
-                        <div className="twelve wide two column grid">
-                            
-                            <div className="ui segment">
-                                <h3>Title</h3> 
-                                <p>It doesn't break on MSIE6 or other legacy browsers. 
-                                    It either uses a fall-back or simply does nothing.</p>   
-                            </div>
-                            
-                            <div className="ui stackable doubling two column grid">
-                                <div className="eleven wide column">
+                        <div className="thirteen wide two column grid question">
+                            <div className="ui segment question">
+
+                                {this.renderContent()}
+                                <div className="ui stackable doubling two column grid">
                                     <CodeDisplay 
                                         answerId={this.state.post}
                                     />
-                                </div>
-                                <div className="five wide column">
-                                    <div className="ui segment">
-                                        <h5>Solutions</h5>
-                                        <p><b>Array</b>  > Greedy</p>
-                                        
-                                        <p>DOMPurify is written in JavaScript and works in 
-                                            all modern browsers (Safari (10+), Opera (15+), 
-                                            Internet Explorer (10+), Edge, Firefox and Chrome - 
-                                            as well as almost anything else using Blink or WebKit).</p>
-                                        <p>It doesn't break on MSIE6 or other legacy browsers. 
-                                        It either uses a fall-back or simply does nothing.</p>
+                                    <div className="five wide column solutions">
+                                        <div className="ui segment">
+                                            <h5>Solutions</h5>
+                                            <p><b>Array</b>  > Greedy</p>
+                                            
+                                            <p>DOMPurify is written in JavaScript and works in 
+                                                all modern browsers (Safari (10+), Opera (15+), 
+                                                Internet Explorer (10+), Edge, Firefox and Chrome - 
+                                                as well as almost anything else using Blink or WebKit).</p>
+                                            <p>It doesn't break on MSIE6 or other legacy browsers. 
+                                            It either uses a fall-back or simply does nothing.</p>
+                                        </div>
                                     </div>
-                                </div>
-                                <div className="column">
-                                    <div className="ui segment">
-                                        Array ---   DP  --- Medium
+                                    <div className="column">
+                                        <div className="ui segment">
+                                            Array ---   DP  --- Medium
+                                        </div>
                                     </div>
                                 </div>
                             </div>
 
                             
                         </div>
-                        <div className="four wide column">
-                            <div className="ui segment">
-                                Content
-                                Content
-                                Content
-                                Content
-                                Content
-                                ContentContent
-                                Content
-                                Content
-                                Content
-                                Content
-                                Content
-                                ContentContent
-
-                            </div>
+                        <div className="three wide stackable two column grid">
+                            <QuestionList
+                                current={this.state.questionSelected}
+                                questions={this.state.questions}
+                                onQuestionSelect={this.onQuestionSelect}
+                            />
                         </div>
                     </div>
                 </div>

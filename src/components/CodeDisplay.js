@@ -1,5 +1,6 @@
 import React from 'react';
 import RenderedMarkdown from './RenderedMarkdown'
+import './CodeDisplay.css';
 
 class CodeDisplay extends React.Component {
     constructor(props) {
@@ -19,7 +20,7 @@ class CodeDisplay extends React.Component {
 
     render() {
         return (
-            <div className="ui segment">
+            <div className="ui eleven wide column codeDisplay">
                 <RenderedMarkdown 
                     content={this.state.answerFile}
                 />
