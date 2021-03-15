@@ -23,11 +23,11 @@ class PrismCode extends React.Component {
     // };
 
     render() {
-        const {code,language } = this.props;
+        const {code,language} = this.props;
         return (
             <pre>
                 <code ref={this.ref} className={`language-${language}`}>
-                    {code.trim()}sdsdasd
+                    {code}
                 </code>
             </pre>
         );

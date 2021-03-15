@@ -2,35 +2,15 @@ import './AlgoApp.css';
 import React from 'react';
 import QuestionsMenu from './QuestionsMenu';
 import ViewMenu from './ViewMenu';
-import PrismCode from './PrismCode';
-import CodeEditor from './CodeEditor';
+import CodeDisplay from './CodeDisplay'
 
 
-const code = `
-def fib_iterative(n):
-    a, b = 0, 1
-    while n > 0:
-        a, b = b, a + b sdasdsadasdasdasdsdasdadas
-        n -= 1
-    return a
-
-    a, b = 0, 1
-    while n > 0:
-        a, b = b, a + b sdasdsadasdasdasdsdasdadas
-        n -= 1
-    return a
-
-    a, b = 0, 1
-    while n > 0:
-        a, b = b, a + b sdasdsadasdasdasdsdasdadas
-        n -= 1
-    return a
-`
 
 class AlgoApp extends React.Component {
     state = { 
-        questions: [], categories: [], categorySelected: null, 
+        questions: [], categories: [], categorySelected: null, source: './algo.md',
         views: ['Single','Grid','Most Popular'], currentView: 'Single',
+        post: 'algo',
     }
 
     componentDidMount(){
@@ -86,27 +66,24 @@ class AlgoApp extends React.Component {
                         onViewSelect = {this.onViewSelect}
                     />
                 </div>
-                <div class="ui container">
-                    <div class="ui stackable two column grid">
-                        <div class="twelve wide two column grid">
+                <div className="ui container">
+                    <div className="ui stackable two column grid">
+                        <div className="twelve wide two column grid">
                             
-                            <div class="ui segment">
+                            <div className="ui segment">
                                 <h3>Title</h3> 
                                 <p>It doesn't break on MSIE6 or other legacy browsers. 
                                     It either uses a fall-back or simply does nothing.</p>   
                             </div>
                             
-                            <div class="ui stackable doubling two column grid">
-                                <div class="eleven wide column">
-                                    <div class="ui segment">
-                                        <PrismCode
-                                            code={code}
-                                            language='python'
-                                        />
-                                    </div>
+                            <div className="ui stackable doubling two column grid">
+                                <div className="eleven wide column">
+                                    <CodeDisplay 
+                                        answerId={this.state.post}
+                                    />
                                 </div>
-                                <div class="five wide column">
-                                    <div class="ui segment">
+                                <div className="five wide column">
+                                    <div className="ui segment">
                                         <h5>Solutions</h5>
                                         <p><b>Array</b>  > Greedy</p>
                                         
@@ -119,7 +96,7 @@ class AlgoApp extends React.Component {
                                     </div>
                                 </div>
                                 <div className="column">
-                                    <div class="ui segment">
+                                    <div className="ui segment">
                                         Array ---   DP  --- Medium
                                     </div>
                                 </div>
@@ -127,8 +104,8 @@ class AlgoApp extends React.Component {
 
                             
                         </div>
-                        <div class="four wide column">
-                            <div class="ui segment">
+                        <div className="four wide column">
+                            <div className="ui segment">
                                 Content
                                 Content
                                 Content
@@ -143,15 +120,6 @@ class AlgoApp extends React.Component {
                                 ContentContent
 
                             </div>
-                        </div>
-                    </div>
-                </div>
-                
-
-                <div className="ui container">
-                    <div class="ui stackable two column grid">
-                        <div class="column">
-                            <CodeEditor />
                         </div>
                     </div>
                 </div>
