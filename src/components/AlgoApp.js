@@ -7,9 +7,6 @@ import QuestionList from './QuestionList';
 import QuestionDisplay from './QuestionDisplay';
 
 
-
-
-
 class AlgoApp extends React.Component {
     state = { 
         questions: [], categories: [], categorySelected: null, 
@@ -75,7 +72,7 @@ class AlgoApp extends React.Component {
     };
 
     //Helper Function
-    renderContent = () => {
+    questionRenderContent = () => {
         if ( this.state.questionSelected == null) {
             return <div>Loading....... </div>;
         } else {
@@ -108,7 +105,7 @@ class AlgoApp extends React.Component {
                         <div className="thirteen wide two column grid question">
                             <div className="ui segment question">
 
-                                {this.renderContent()}
+                                {this.questionRenderContent()}
                                 <div className="ui stackable doubling two column grid">
                                     <CodeDisplay 
                                         answerId={this.state.post}
