@@ -3,13 +3,14 @@ import RenderedMarkdown from './RenderedMarkdown'
 import './CodeDisplay.css';
 
 class CodeDisplay extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = { answerFile: '' }
+    state = { answerFile: '' }
+
+    componentDidMount() {
+        //this.loadCode(this.props.file);
     }
 
-    async componentDidMount() {
-        const file = await import(`../data/${this.props.answerId}.md`);
+    loadCode = async (code) => {
+        const file = await import(`../data/code/${code}`);
         const response = await fetch(file.default);
         const text = await response.text();
 
@@ -18,12 +19,29 @@ class CodeDisplay extends React.Component {
         });
     }
 
-    render() {
-        return (
-            <div className="ui eleven wide column codeDisplay">
+    componentDidUpdate(prevState) {
+        // check whether client has changed
+        if (prevState.answerFile !== '') {
+            this.loadCode(this.props.file);
+        }
+    }
+
+    renderCodeContent = () => {
+        if (this.state.answerFile === '') {
+            return <div>Loading Code....... </div>;
+        } else {
+            return(
                 <RenderedMarkdown 
                     content={this.state.answerFile}
                 />
+            );
+        }
+    }
+
+    render() {
+        return (
+            <div className="ui eleven wide column codeDisplay">
+                {this.renderCodeContent()}
             </div>
         );
     }
