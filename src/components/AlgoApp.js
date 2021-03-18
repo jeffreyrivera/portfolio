@@ -5,52 +5,79 @@ import ViewMenu from './ViewMenu';
 import CodeDisplay from './CodeDisplay'
 import QuestionList from './QuestionList';
 import QuestionDisplay from './QuestionDisplay';
-
-
-
+import Question from './Question';
 
 
 class AlgoApp extends React.Component {
     state = { 
-        questions: [], categories: [], categorySelected: null, 
-        questionSelected: null, source: './algo.md',
-        views: ['Single','Grid','Most Popular'], currentView: 'Single',
-        post: 'algo',
+        questions: [], categories: [], answers: [], categorySelected: null, 
+        questionAnswers: null, questionSelected: null, answerSelected: null, 
+        views: ['Single','Grid','List'], currentView: 'Single',
+        post: '101_501', questionRef : React.createRef()
     }
 
     componentDidMount(){
-        this.setCategoryData();
-        this.setQuestionData('array');
+        this.setData();
+        //TODO vr. 2 loading component until api request finishes
     }
+    
 
-    setCategoryData = () => {
-
+    setData = async () => {
         const categoriesAPI = [{id: 1, value:'Array'}, {id: 2,value:'Sorting'}, {id: 3,value:'DP'}, {id: 4,value:'Recursion'}, {id: 5,value:'Tree'}];
-        this.setState({
-            categories: categoriesAPI,
-            categorySelected: categoriesAPI[0]['value']
+        const initialCategory = categoriesAPI[0]['value']
+
+        //TODO questions API request Vr. 2
+        const questionsResponse = await require(`../data/questions/${initialCategory}Questions.json`);
+        console.log(questionsResponse);
+        console.log(questionsResponse[0]);
+        const questionSelected = questionsResponse[0]
+        
+        //TODO asnswers API request Vr. 2
+        const answerResponse = await require(`../data/questions/${initialCategory}Answers.json`); 
+        
+        const answersAvailable = answerResponse.filter((answer) => {
+            return answer.q_id === questionSelected.id;
         });
         
-    };
-    setQuestionData = (term) =>{
-        //TODO questions API request Vr. 2
+        //pick one answer
 
-        const response = require(`../data/questions/${term}Questions.json`);
-        console.log(response);
-        console.log(response[0]);
+
+        //TODO response stagging loading screen while loading API request Vr. 2
         this.setState({
-            questions: response,
-            questionSelected: response[0]
+            categories: categoriesAPI,
+            categorySelected: categoriesAPI[0]['value'],
+            questions: questionsResponse,
+            questionSelected: questionSelected,
+            answers: answerResponse,
+            questionAnswers: answersAvailable,
+            answerSelected: answersAvailable[0],
         });
-    };
+        
+    }
+
     onQuestionSelect = (question) => {
         //console.log('from App Question is : ', question);
         if (question !== this.state.questionSelected){
-            this.setState( { questionSelected: question });
+
+            const newAnswers= this.state.answers.filter((answer) => {
+                return answer.q_id === question.id;
+            });
+            
+            //console.log(newAnswers);
+            this.setState( { 
+                questionSelected: question,
+                questionAnswers: newAnswers,
+                answerSelected: newAnswers[0]
+            });
+            this.updateChild(newAnswers[0]);
+
         } else {
             console.log('Same Question Selected');
         }
         //TODO load appropiate questions array from API and update current questions state
+    };
+    updateChild = (code) => {
+        this.state.questionRef.current.updateCode(code); 
     };
 
     onCategorySelect = (category) => {
@@ -62,11 +89,6 @@ class AlgoApp extends React.Component {
         }
         //TODO load appropiate questions array from API and update current questions state
     };
-    onQuestionView = (view) => {
-        if (view !== this.state.currentView){
-            this.setState({currentView: view});
-        } 
-    };
 
     onViewSelect = (view) => {
         if (view !== this.state.currentView){
@@ -75,18 +97,19 @@ class AlgoApp extends React.Component {
     };
 
     //Helper Function
-    renderContent = () => {
-        if ( this.state.questionSelected == null) {
+    renderQuestionContent = () => {
+        if (this.state.questionSelected === null || this.state.answerSelected === null) {
             return <div>Loading....... </div>;
         } else {
-            return (
-                <QuestionDisplay
+            return(
+                <Question
                     question={this.state.questionSelected}
+                    answer={this.state.answerSelected}
+                    ref={this.state.questionRef}
                 />
             );
         }
     }
-    
 
     render() {
         return (
@@ -106,35 +129,7 @@ class AlgoApp extends React.Component {
                 <div className="ui container grid">
                     <div className="ui stackable two column grid">
                         <div className="thirteen wide two column grid question">
-                            <div className="ui segment question">
-
-                                {this.renderContent()}
-                                <div className="ui stackable doubling two column grid">
-                                    <CodeDisplay 
-                                        answerId={this.state.post}
-                                    />
-                                    <div className="five wide column solutions">
-                                        <div className="ui segment">
-                                            <h5>Solutions</h5>
-                                            <p><b>Array</b>  > Greedy</p>
-                                            
-                                            <p>DOMPurify is written in JavaScript and works in 
-                                                all modern browsers (Safari (10+), Opera (15+), 
-                                                Internet Explorer (10+), Edge, Firefox and Chrome - 
-                                                as well as almost anything else using Blink or WebKit).</p>
-                                            <p>It doesn't break on MSIE6 or other legacy browsers. 
-                                            It either uses a fall-back or simply does nothing.</p>
-                                        </div>
-                                    </div>
-                                    <div className="column">
-                                        <div className="ui segment">
-                                            Array ---   DP  --- Medium
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            
+                            {this.renderQuestionContent()}                           
                         </div>
                         <div className="three wide stackable two column grid">
                             <QuestionList

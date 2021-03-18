@@ -1,13 +1,14 @@
 import React from 'react';
 
-
-
 const QuestionDisplay = ({question}) => {
 
     const renderedList = question.examples.map( (example) => {
+
+        const explanation = (example[2] != null) ? `- <b>Explanation</b>: ${example[2]}` : ``;
+
         return (
-            <div>
-                <p><b>Input</b>: {example[0]} - <b>Output</b>: {example[1]}</p>
+            <div  key={example}>
+                <p><b>Input</b>: {example[0]} - <b>Output</b>: {example[1]}{explanation}</p>
             </div>
             
         );
