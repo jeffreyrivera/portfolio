@@ -1,12 +1,13 @@
 import React from 'react';
 import Solution from './Solution';
 
-const SolutionList = ({solutions, onSolutionSelect}) => {
+const SolutionList = ({current, solutions, onSolutionSelect}) => {
 
     const renderedList = solutions.map((solution) => {
         return (
             <Solution
-                key={solution.id}
+                key={solution[0]}
+                current={current}
                 solution={solution}
                 onSolutionSelect={onSolutionSelect}
             />
@@ -14,11 +15,14 @@ const SolutionList = ({solutions, onSolutionSelect}) => {
     });
     //<div className="ui clearing divider"></div>
     return (
-        <div className="ui menu">
-            <header className="item">
+        <div className="row solutions">
+            <header className="column" title="Solutions">
                 <h2>Solutions</h2>
             </header>
-            {renderedList}
+            <div className="ui text menu solutions">
+                {renderedList}
+            </div>
+            <p>{current.description}</p>
         </div>
     );
 };

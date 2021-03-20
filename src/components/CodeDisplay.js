@@ -10,7 +10,7 @@ class CodeDisplay extends React.Component {
     }
 
     loadCode = async (code) => {
-        const file = await import(`../data/code/${code}`);
+        const file = await import(`../assets/code/${code}`);
         const response = await fetch(file.default);
         const text = await response.text();
 
@@ -21,7 +21,7 @@ class CodeDisplay extends React.Component {
 
     componentDidUpdate(prevState) {
         // check whether client has changed
-        if (prevState.answerFile !== '') {
+        if (prevState.answerFile !== this.state.answerFile) {
             this.loadCode(this.props.file);
         }
     }
@@ -40,7 +40,7 @@ class CodeDisplay extends React.Component {
 
     render() {
         return (
-            <div className="ui eleven wide column codeDisplay">
+            <div className={`ui ${this.props.size} wide column codeDisplay`}>
                 {this.renderCodeContent()}
             </div>
         );

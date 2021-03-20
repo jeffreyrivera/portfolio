@@ -16,14 +16,14 @@ const QuestionList = ( {current, questions, onQuestionSelect} ) => {
     });
     //<div className="ui clearing divider"></div>
     return (
-        <div className="column">
-            <div className="ui menu vertical">
-                <header className="item">
-                    <h2>List of Questions</h2>
-                </header>
-                {renderedList}
-            </div>
+
+        <div className="ui menu vertical questionList">
+            <header className="item">
+                <h2>List of Questions</h2>
+            </header>
+            {renderedList}
         </div>
+
     );
 };
 

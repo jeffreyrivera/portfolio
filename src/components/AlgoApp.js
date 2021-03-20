@@ -2,45 +2,63 @@ import './AlgoApp.css';
 import React from 'react';
 import QuestionsMenu from './QuestionsMenu';
 import ViewMenu from './ViewMenu';
-import CodeDisplay from './CodeDisplay'
 import QuestionList from './QuestionList';
-import QuestionDisplay from './QuestionDisplay';
 import Question from './Question';
+import Contact from './Contact';
+import DropDownList from './DropDownList';
 
 
 class AlgoApp extends React.Component {
     state = { 
-        questions: [], categories: [], answers: [], categorySelected: null, 
-        questionAnswers: null, questionSelected: null, answerSelected: null, 
-        views: ['Single','Grid','List'], currentView: 'Single',
-        post: '101_501', questionRef : React.createRef()
+        questions: [], categories: [], answers: [], solutionsAvailable: [], 
+        categorySelected: null, questionAnswers: null, questionSelected: null, answerSelected: null, 
+        views: ['Single','List'], currentView: 'List', menuType: 'pointing',
+        questionRef : React.createRef(), dropDownRef : React.createRef()
     }
 
     componentDidMount(){
         this.setData();
         //TODO vr. 2 loading component until api request finishes
+        window.addEventListener("resize", this.resize);
+        this.resize();
+    }
+
+    resize = () => {
+        if (window.innerWidth <= 760){
+            this.setState({
+                menuType: 'vertical'
+            });
+        } else {
+            this.setState({
+                menuType: 'pointing'
+            });
+        }
+    };
+    
+    componentWillUnmount() {
+        window.removeEventListener("resize", this.resize);
     }
     
 
     setData = async () => {
         const categoriesAPI = [{id: 1, value:'Array'}, {id: 2,value:'Sorting'}, {id: 3,value:'DP'}, {id: 4,value:'Recursion'}, {id: 5,value:'Tree'}];
-        const initialCategory = categoriesAPI[0]['value']
+        const initialCategory = categoriesAPI[0]['value'];
 
         //TODO questions API request Vr. 2
-        const questionsResponse = await require(`../data/questions/${initialCategory}Questions.json`);
-        console.log(questionsResponse);
-        console.log(questionsResponse[0]);
-        const questionSelected = questionsResponse[0]
+        const questionsResponse = await require(`../assets/questions/${initialCategory}Questions.json`);
+        const questionSelected = questionsResponse[0];
         
         //TODO asnswers API request Vr. 2
-        const answerResponse = await require(`../data/questions/${initialCategory}Answers.json`); 
+        const answerResponse = await require(`../assets/answers/${initialCategory}Answers.json`); 
         
         const answersAvailable = answerResponse.filter((answer) => {
             return answer.q_id === questionSelected.id;
         });
         
-        //pick one answer
-
+        const solutions = [];
+        answersAvailable.forEach((answer) => {
+            solutions.push([answer.id, answer.title]);
+        });
 
         //TODO response stagging loading screen while loading API request Vr. 2
         this.setState({
@@ -51,6 +69,7 @@ class AlgoApp extends React.Component {
             answers: answerResponse,
             questionAnswers: answersAvailable,
             answerSelected: answersAvailable[0],
+            solutionsAvailable : solutions
         });
         
     }
@@ -62,23 +81,57 @@ class AlgoApp extends React.Component {
             const newAnswers= this.state.answers.filter((answer) => {
                 return answer.q_id === question.id;
             });
+            const solutionsUpdate = [];
+            newAnswers.forEach((answer) => {
+                solutionsUpdate.push([answer.id, answer.title]);
+            });
             
             //console.log(newAnswers);
             this.setState( { 
                 questionSelected: question,
                 questionAnswers: newAnswers,
-                answerSelected: newAnswers[0]
+                answerSelected: newAnswers[0],
+                solutionsAvailable : solutionsUpdate
             });
-            this.updateChild(newAnswers[0]);
+            this.updateChild();
+            if (this.state.currentView === 'Single'){
+                this.updateDropDown();
+            }
+            
 
         } else {
             console.log('Same Question Selected');
         }
         //TODO load appropiate questions array from API and update current questions state
     };
-    updateChild = (code) => {
-        this.state.questionRef.current.updateCode(code); 
+    updateChild = () => {
+        this.state.questionRef.current.updateCode(); 
     };
+
+    updateDropDown = () => {
+        this.state.dropDownRef.current.handleClickParent(); 
+    };
+
+
+    onSolutionSelect = (solutionId) => {
+        //console.log('from App Question is : ', question);
+        if (solutionId !== this.state.answerSelected.id){
+
+            const newAnswer = this.state.answers.find((answer) => {
+                return answer.id === solutionId;
+            });
+
+            this.setState( { 
+                answerSelected: newAnswer,
+            });
+            this.updateChild();
+
+        } else {
+            console.log('Same Solution Selected');
+        }
+        //TODO load appropiate questions array from API and update current questions state
+    };
+
 
     onCategorySelect = (category) => {
         //console.log('from App Category is : ', category);
@@ -106,39 +159,82 @@ class AlgoApp extends React.Component {
                     question={this.state.questionSelected}
                     answer={this.state.answerSelected}
                     ref={this.state.questionRef}
+                    solutions={this.state.solutionsAvailable}
+                    onSolutionSelect={this.onSolutionSelect}
                 />
             );
         }
     }
 
+    renderDropDown = (view) => {
+        if (view === 'Single'){
+            return (
+                <DropDownList 
+                    current={this.state.questionSelected}
+                    questions={this.state.questions}
+                    onQuestionSelect={this.onQuestionSelect}
+                    ref={this.state.dropDownRef}
+                />
+            );
+        }
+    }
+
+    renderDifferentViews = (view) => {
+        if (view === 'Single'){
+            return (
+                <div className="ui stackable two column grid">
+                    <div className="sixteen wide two column grid question">
+                        {this.renderQuestionContent()}                           
+                    </div>
+                    
+                </div>
+            );
+        } else  {
+            return (
+                <div className="ui stackable two column grid">
+                    <div className="thirteen wide two column grid question">
+                        {this.renderQuestionContent()}                           
+                    </div>
+                    <div className="three wide stackable two column grid">
+                        <QuestionList
+                            current={this.state.questionSelected}
+                            questions={this.state.questions}
+                            onQuestionSelect={this.onQuestionSelect}
+                        />
+                    </div>
+                </div>
+            );
+        }
+    }
+
+
     render() {
         return (
-            <div>
-                <div className="ui container">
-                    <QuestionsMenu 
-                        categories = {this.state.categories}
-                        current = {this.state.categorySelected}
-                        onCategorySelect = {this.onCategorySelect}
-                    />
-                    <ViewMenu
-                        current = {this.state.currentView}
-                        views = {this.state.views}
-                        onViewSelect = {this.onViewSelect}
-                    />
-                </div>
+            <div className="App">
+                <Contact />
                 <div className="ui container grid">
-                    <div className="ui stackable two column grid">
-                        <div className="thirteen wide two column grid question">
-                            {this.renderQuestionContent()}                           
-                        </div>
-                        <div className="three wide stackable two column grid">
-                            <QuestionList
-                                current={this.state.questionSelected}
-                                questions={this.state.questions}
-                                onQuestionSelect={this.onQuestionSelect}
+                    <div className="sixteen wide column category">
+                        <QuestionsMenu  
+                            categories = {this.state.categories}
+                            current = {this.state.categorySelected}
+                            onCategorySelect = {this.onCategorySelect}
+                            menuType={this.state.menuType}
+                        />
+                        
+                    </div>
+                    <div className="ui container grid algo">
+                        <div className="sixteen wide column algo">
+                            <ViewMenu
+                                current = {this.state.currentView}
+                                views = {this.state.views}
+                                onViewSelect = {this.onViewSelect}
                             />
+                            {this.renderDropDown(this.state.currentView)}
                         </div>
                     </div>
+                </div>
+                <div className="ui container grid">
+                    {this.renderDifferentViews(this.state.currentView)}
                 </div>
             </div>
         );

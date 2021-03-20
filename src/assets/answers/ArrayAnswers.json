@@ -7,11 +7,11 @@
 
     { "id": 504, "q_id": 103, "title": "Sort", "description": "Given an array of intervals where intervals[i] = [starti, endi], merge all overlapping intervals, and return an array of the non-overlapping intervals that cover all the intervals in the input.", "code": "103_504.md"},
 
-    { "id": 505, "q_id": 103, "title": "Sort + Max", "description": "Given an array of intervals where intervals[i] = [starti, endi], merge all overlapping intervals, and return an array of the non-overlapping intervals that cover all the intervals in the input.", "code": "103_505.md"},
+    { "id": 505, "q_id": 103, "title": "Sort + Max", "description": "Part 2 Given an array of intervals where intervals[i] = [starti, endi], merge all overlapping intervals, and return an array of the non-overlapping intervals that cover all the intervals in the input.", "code": "103_505.md"},
 
     { "id": 506, "q_id": 104, "title": "Two Pointer", "description": "Given n non-negative integers representing an elevation map where the width of each bar is 1, compute how much water it can trap after raining.", "code": "104_506.md"},
 
-    { "id": 507, "q_id": 104, "title": "DP", "description": "Given n non-negative integers representing an elevation map where the width of each bar is 1, compute how much water it can trap after raining.", "code": "104_506.md"},
+    { "id": 507, "q_id": 104, "title": "DP", "description": "Part 2 Given n non-negative integers representing an elevation map where the width of each bar is 1, compute how much water it can trap after raining.", "code": "104_507.md"},
 
     { "id": 508, "q_id": 105, "title": "Continuous Sum", "description": "Given an array of integers nums and an integer k, return the total number of continuous subarrays whose sum equals to k.", "code": "105_508.md"},
 
@@ -21,5 +21,5 @@
 
     { "id": 511, "q_id": 108, "title": "Merge", "description": "Given two sorted arrays nums1 and nums2 of size m and n respectively, return the median of the two sorted arrays.", "code": "108_511.md"},
 
-    { "id": 512, "q_id": 108, "title": "Log", "description": "Given two sorted arrays nums1 and nums2 of size m and n respectively, return the median of the two sorted arrays.", "code": "108_512.md"}
+    { "id": 512, "q_id": 108, "title": "Log", "description": "Part 2Given two sorted arrays nums1 and nums2 of size m and n respectively, return the median of the two sorted arrays.", "code": "108_512.md"}
 ]

@@ -1,17 +1,84 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,500;1,600;1,700&family=Ubuntu:wght@700&display=swap');
 
 body{
-    font-family: 'Josefin Sans', sans-serif
-
+    font-family: 'Josefin Sans', sans-serif;
+    background: #023047;
+    color:white;
 }
+/* h1, h2, h3, h4, h5 {
+    font-family: 'Ubuntu', sans-serif;
+} */
 .ui.segment {
-    font-size: 1.2rem;
+    font-size: 1.25rem;
+    background-color: transparent;
+}
+.ui.menu {
+    background: #8ECAE6;
+    font-size: 1.1rem;
+    font-weight: 900;
+    
+}
+.sixteen.wide.column.category{
+    padding-left: 0px;
+    padding-right: 0px;
+}
+.sixteen.wide.column.algo{
+    padding-left: 0px;
+    padding-top: 5px;
+    padding-bottom: 0px;
+}
+.ui.container.grid.algo {
+    padding-left: 0px;
+    margin-left: 0px;
+}
+
+
+.ui.menu .item{
+    color:white;
+}
+.ui.menu .active.item {
+    background: #8ECAE6;
+    font-size: 1rem;
+    color:white;
+    font-weight: bold;
+}
+
+.ui.menu.vertical{
+    background: #8ECAE6;
+    width: auto;
+}
+.ui.menu.vertical.questionList.dropDown {
+    position: absolute;
+    z-index: 100;
+    border: 1px solid rgba(0, 0, 0, 0.281);
+    box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.397);
+}
+.ui.vertical.menu .active.item {
+    background: #fb8500;
+    color:rgb(255, 255, 255);
+    border-radius: 3px;
+    -webkit-box-shadow: none;
+    box-shadow: none;
 }
 .ui.segment.question{
     border-radius: 5px;
     margin-top: 0px;
 }
+.ui.stackable.two.column.grid {
+    padding: 0px;
+}
 .thirteen.wide.two.column.grid.question {
+    padding-top: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+.sixteen.wide.two.column.grid.question {
+    padding-top: 0px;
+    padding-left: 0px;
+}
+.three.wide.stackable.two.column.grid {
+    padding-top: 0px;
+    padding-left: 0px;
     padding-right: 0px;
 }
 .ui.segment.code {
@@ -20,14 +87,43 @@ body{
 }
 .five.wide.column.solutions {
     margin-top: 0.5em;
-    padding-left: 0px;
-    min-height: 450px;
+    min-height: 150px;
 }
 .ui.pointing.menu.algo {
     margin: 0;
+    color:white;
 }
-.ui.text.menu.algo {
+.row.solutions {
+    border-top: 2px solid rgb(33 158 188);
+    padding-top: .9em;
+    padding-bottom: .5em;
+}
+.right.menu {
+    padding: 0em;
+    line-height: .5em;
+}
+.ui.text.menu{
     margin: 0;
+}
+.ui.text.menu .header.item {
+    color:rgba(255, 255, 255, 0.555);
+
+}
+.ui.text.menu .item {
+    color:rgba(255, 255, 255, 0.555);
+    font-size: .9rem;
+    font-weight: 500;
+    padding-left: 0em;
+    padding-right: 0.7em;
+}
+.ui.text.menu.solutions {
+    margin: 0;
+    padding-bottom: 1.3em;   
+}
+.ui.text.menu .active.item{
+    color:rgba(255, 255, 255, 0.753);
+    font-weight: 700;
+    text-decoration: underline;
 }
 .questionDisplay {
     margin-bottom: 1em;
@@ -35,7 +131,23 @@ body{
 .codeDisplay pre {
     min-height: 450px;
 }
-
+@media only screen and (max-width: 767px) {
+    .ui.container.grid{
+        margin-left: 2em!important;
+    }
+    .ui.container.grid.algo{
+        margin-left: 2em!important;
+    }
+    .ui.vertical.menu.questionList{
+        width: auto!important;
+    }
+    .ui.vertical.menu.algo{
+        width: auto!important;
+    }
+    .three.wide.stackable.two.column.grid {
+        margin-left: 1.5em!important;
+    }
+}
 
 /* // after body element, add the code below. It means the ID #fonts in body element will apply this specific style. */
 

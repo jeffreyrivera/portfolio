@@ -2,7 +2,7 @@ import React from 'react';
 import QuestionsCategory from './QuestionsCategory';
 
 
-const QuestionsMenu = ( {categories, current, onCategorySelect} ) => {
+const QuestionsMenu = ( {menuType, categories, current, onCategorySelect} ) => {
     //TODo needs categories to be displkayed and map here
     //displaying active the first category 
     //eventually also using a search box to find question
@@ -17,7 +17,7 @@ const QuestionsMenu = ( {categories, current, onCategorySelect} ) => {
         );
     });
     return (
-        <div className="ui pointing menu algo">
+        <div className={`ui ${menuType} menu algo`}>
             {renderCategories}
             <div className="right menu">
                 <div className="item">
