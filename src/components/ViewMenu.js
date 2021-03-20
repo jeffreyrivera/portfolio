@@ -14,7 +14,7 @@ const ViewMenu = ({current, views, onViewSelect}) => {
     });
     return (
         <div className="ui text menu algo">
-            <div className="right menu">
+            <div className="menu">
                 <div className="header item">View as</div>
                 {renderViews}
             </div>

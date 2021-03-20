@@ -1,0 +1,18 @@
+
+.dropdown {
+    position: relative;
+    float: right;
+    width: 300 px;
+    z-index: 100;
+    box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.397);
+    padding-left: 0px;
+  }
+
+
+.hamburger.icon{
+	background-image : url(../assets/image.png);
+	background-repeat : no-repeat;
+    width: 45px;
+    height: 37px;
+    object-fit: contain;
+}
