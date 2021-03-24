@@ -1,0 +1,117 @@
+.ui.grid.mainPart {
+    margin-top: 3em;
+}
+
+.heading {
+    width: 392px;
+    margin-left: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.half-a-border-on-top {
+    /* border-bottom: .5em solid #ffcc00; */
+    position: relative;
+}
+.half-a-border-on-top:after {
+    padding:0;margin:0;display:block;/* probably not really needed? */
+    content: "";
+    height:73.5%;
+    width:.5em;/* slight higher to work around rounding errors(?) on some zoom levels in some browsers. */
+    background-color: #ffcc00;
+    position: absolute;
+    right:0;
+    top:60%;
+}
+.half-border-on-bottom:after {
+    padding:0;margin:0;display:block;/* probably not really needed? */
+    content: "";
+    width:50%;
+    height:.5em;/* slight higher to work around rounding errors(?) on some zoom levels in some browsers. */
+    background-color: #ffcc00;
+    position: absolute;
+    right:50%;
+    bottom:0%;
+}
+
+.portraitDisplay {
+    display: inline-block;
+    position: relative;
+    width: 392px;
+    height: 390px;
+    overflow: hidden;
+    border-radius: 50%;
+    padding-left: 0;
+    padding-right: 0;
+    border: #ffcc00 .5em solid;
+    box-shadow: 0 0 5px 0px #ffcc00 inset, 0 0 0px 0px rgba(0, 0, 0, 0.418);
+    margin-right: auto;
+    margin-left:-.60em;
+}
+
+.portraitDisplay img {
+    width: auto;
+    height: 100%;
+    margin-right: 30px;
+}
+.arrowMenu {
+    height: 70%;
+    position: fixed;
+    z-index: 101;
+    margin: 0em 2em;
+    bottom: 0;
+    right: 0;
+    right: auto;
+    top: auto;
+}
+.arrowMenu img{
+    bottom: 10px;
+    left: .25em;
+    position: fixed;
+}
+.left-arrow:after {
+    padding:0;margin:0;display:block;/* probably not really needed? */
+    content: "";
+    height:1080%;
+    width:.5em;/* slight higher to work around rounding errors(?) on some zoom levels in some browsers. */
+    background-color: #ffcc00;
+    position: absolute;
+    right:0%;
+    top:0;
+}
+.heading h1{
+    font-size: 4em;
+    text-align: left;
+    text-justify: auto;
+    letter-spacing: -2px;
+}
+.shortH h1 {
+    letter-spacing: -4px;
+}
+.yellowArrow{
+    color : #ffcc00;
+}
+
+@media only screen and (max-width: 955px) {
+    .arrowMenu {
+        height: 0%;
+    }
+}
+@media only screen and (max-width: 770px) {
+    .heading {
+        margin-left: 2em;
+        margin-right: auto;
+        padding-left: .5em;
+    }
+    .portraitDisplay {
+        margin-top: 2em;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .half-border-on-bottom:after {
+        height:0;
+    }
+    .half-a-border-on-top:after {
+        width:0;
+    }
+}

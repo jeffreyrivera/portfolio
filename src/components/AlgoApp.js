@@ -211,7 +211,9 @@ class AlgoApp extends React.Component {
     render() {
         return (
             <div className="App">
-                <Contact />
+                <div className="four column row spacing">
+
+                </div>
                 <div className="ui container grid">
                     <div className="sixteen wide column category">
                         <QuestionsMenu  
