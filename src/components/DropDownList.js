@@ -1,7 +1,6 @@
 import React from 'react';
 import QuestionItem from './QuestionItem';
 import "./DropDownList.css";
-import DropDownItem from './DropDownItem';
 
 class DropDownList extends React.Component {
 

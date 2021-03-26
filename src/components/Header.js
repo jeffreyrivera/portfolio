@@ -1,5 +1,4 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
 import './Header.css'
 import burger from '../assets/hamburgerSmall.png';
 import logo from '../assets/logo.png';

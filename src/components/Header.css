@@ -21,7 +21,6 @@
 .contactButton {
     top: .7em;
     right: 5em;
-    /* margin-top: .8em;*/
     margin-bottom: 1.2em; 
     font-family: 'Josefin Sans', sans-serif;
     font-size: 1.2em;
@@ -34,4 +33,9 @@
     border-radius: .28571429rem;
     box-shadow: 0 1px 2px 0 rgb(34 36 38 / 15%);
     position: relative;
+}
+@media only screen and (max-width: 781px) {
+    #root {
+        border: none;
+    }
 }

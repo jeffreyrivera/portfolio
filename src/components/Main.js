@@ -8,7 +8,8 @@ const Main = () => {
   return (
     <div className="ui grid mainPart">
         <div className="arrowMenu left-arrow">
-            <img src={arrow} alt="Menu"/>
+            <span className="arrow-second">=&gt;</span>
+            {/* <img src={arrow} alt="Menu"/> */}
         </div>
         <div className="three column stackable row half-border-on-bottom">
             <div className="heading half-a-border-on-top">
@@ -20,7 +21,8 @@ const Main = () => {
                 <img src={portrait} alt="Menu"/>
             </div>
         </div>
-
+        <div className="four column row spacing main">
+        </div>
     </div>
 
   );

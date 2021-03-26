@@ -18,6 +18,7 @@ const routing = (
         <Switch>
           <Route exact path="/" component={AlgoApp} />
         </Switch>
+        <Contact />
         <Footer />
     </Router>
   );

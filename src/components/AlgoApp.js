@@ -4,7 +4,6 @@ import QuestionsMenu from './QuestionsMenu';
 import ViewMenu from './ViewMenu';
 import QuestionList from './QuestionList';
 import Question from './Question';
-import Contact from './Contact';
 import DropDownList from './DropDownList';
 
 

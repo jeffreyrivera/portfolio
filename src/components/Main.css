@@ -54,7 +54,15 @@
     height: 100%;
     margin-right: 30px;
 }
-.arrowMenu {
+
+.four.column.row.spacing.main {
+    height: 300px;
+}
+.four.column.row.spacing.footer {
+    height: 300px;
+}
+
+/* .arrowMenu {
     height: 70%;
     position: fixed;
     z-index: 101;
@@ -63,22 +71,66 @@
     right: 0;
     right: auto;
     top: auto;
-}
-.arrowMenu img{
+} */
+/* .arrowMenu img{
     bottom: 10px;
-    left: .25em;
+    left: .5em;
     position: fixed;
-}
-.left-arrow:after {
-    padding:0;margin:0;display:block;/* probably not really needed? */
+    box-shadow: 3px 3px 5px 6px #ccc;
+} */
+
+/*.arrow-second{
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 1.5em;
+    font-weight: 700;
+    font-size: 4em;
+    text-align: left;
+    letter-spacing: -5px;
+    bottom: 5%;
+    position: fixed;
+    z-index: 2001;
+    text-shadow: -1px 2px #000000e6;
+    transform: rotate(90deg);
+    color: #ffcc00;
+} */
+.arrow-second {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 1.5em;
+    font-weight: 700;
+    font-size: 4em;
+    text-align: left;
+    letter-spacing: -5px;
+    bottom: 5%;
+    /* left: .5em; */
+    position: fixed;
+    z-index: 2001;
+    text-shadow: -1px 2px #000000e6;
+    transform: rotate(90deg);
+    color: #ffcc00;
+    animation: pulse 1.5s 1;
+  }
+  
+  @keyframes pulse {
+    0% {
+        bottom: 15%;
+    }
+    50% {
+        bottom: 10%;
+    }
+    100% {
+        bottom: 5%;
+    }
+  }
+/* .left-arrow:after {
+    padding:0;margin:0;display:block;
     content: "";
     height:1080%;
-    width:.5em;/* slight higher to work around rounding errors(?) on some zoom levels in some browsers. */
+    width:.5em;
     background-color: #ffcc00;
     position: absolute;
     right:0%;
     top:0;
-}
+} */
 .heading h1{
     font-size: 4em;
     text-align: left;
@@ -92,19 +144,19 @@
     color : #ffcc00;
 }
 
-@media only screen and (max-width: 955px) {
+/* @media only screen and (max-width: 955px) {
     .arrowMenu {
         height: 0%;
     }
-}
-@media only screen and (max-width: 770px) {
+} */
+@media only screen and (max-width: 781px) {
     .heading {
-        margin-left: 2em;
+        margin-left: auto;
         margin-right: auto;
         padding-left: .5em;
     }
     .portraitDisplay {
-        margin-top: 2em;
+        margin-top: 3em;
         margin-left: auto;
         margin-right: auto;
     }
@@ -113,5 +165,13 @@
     }
     .half-a-border-on-top:after {
         width:0;
+    }
+    .four.column.row.spacing.main {
+        min-height: 200px;
+        margin-left: 10px;
+        border-left: none;
+    }
+    .four.column.row.spacing.footer {
+        border-left: none;
     }
 }
