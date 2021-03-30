@@ -9,7 +9,13 @@
 .three.column.stackable.row.projects {
     background-color: #ffcc00;
     margin-top: auto;
-    margin-bottom: auto;
+    margin-bottom: 50px;
+}
+
+.three.column.stackable.row.contactme {
+    background-color: #ffcc00;
+    margin-top: 100px;
+    margin-bottom: 100px;
 }
 
 .column.project-menu {
@@ -52,6 +58,11 @@
     padding-left: 0;
     padding-right: 0;
 }
+
+.ui.grid>.three.column.row>.column.project-keywords.contact.aboutme>.column.project-content{
+    width: 100%!important;
+}
+
 .column.project-content {
     background-color: #000000;
     width: 480px;
@@ -148,6 +159,15 @@
 
     .ui.grid>.three.column.row>.column.project-contents{
         width: 100%!important;
+    }
+
+    .three.column.stackable.row.projects {
+        margin-bottom: auto;
+    }
+    
+    .three.column.stackable.row.contactme {
+        margin-top: auto;
+        margin-bottom: auto;
     }
     .column.project-content{
         width: 100%;

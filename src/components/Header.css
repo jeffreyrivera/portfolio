@@ -4,10 +4,26 @@
 }
 .logoLink {
     padding: .5em;
+    padding-top: .3em;
     margin-left: .5em;
-    top: .5em;
 }
-
+.logoLink h1{
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 700;
+    font-size: 4em;
+    text-align: left;
+    letter-spacing: -5px;
+}
+.logoLink .name-logo{
+    color: #3399cc;
+}
+.logoLink .name-short-logo{
+    color: #3399cc;
+    display: none;
+}
+.logoLink .domain-logo{
+    color:#ffcc00;
+}
 .burgerMenu {
     position: fixed;
     z-index: 101;
@@ -16,26 +32,38 @@
     right: 0;
     left: auto;
     bottom: auto;
+    background-color: rgba(0, 0, 0, 0.877);
+    border: 1px solid rgb(0, 0, 0, 0.877);
 }
 
 .contactButton {
+    height: 2.5em;
     top: .7em;
     right: 5em;
     margin-bottom: 1.2em; 
     font-family: 'Josefin Sans', sans-serif;
-    font-size: 1.2em;
+    font-size: 1.4em;
     font-weight: 700;
+    line-height: 1.2em;
     z-index: 101;
     padding: 0em 1em;
     color: #fffffff0;
     background: #ffcc00;
-    border: 1px solid rgba(34,36,38,.15);
-    border-radius: .28571429rem;
-    box-shadow: 0 1px 2px 0 rgb(34 36 38 / 15%);
+    border: 1px solid rgb(34, 36, 38);
+    border-radius: .38571429rem;
+    box-shadow: 0 2px 2px 0 rgb(34 36 38 / 15%);
     position: relative;
 }
 @media only screen and (max-width: 781px) {
     #root {
         border: none;
+    }
+}
+@media only screen and (max-width: 650px) {
+    .logoLink .name-logo{
+        display: none;
+    }
+    .logoLink .name-short-logo{
+        display: inline;
     }
 }

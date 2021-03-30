@@ -59,3 +59,25 @@ label {
     font-family: inherit;
     padding-top: 1em;
 }
+
+.error-message {
+	font-family: inherit;
+	font-size: inherit;
+	/* box-shadow: 0 0 0 1px #e0b4b4 inset, 0 0 0 0 transparent;
+	border: 1px solid rgba(34,36,38,.15);
+	border-radius: .28571429rem;
+	background: #f8f8f9; */
+    color: #fb8500;
+	position: relative;
+	width: 90%;
+    margin: .1em;
+    padding: 1em;
+    line-height: 1.4285em;
+}
+
+.submit-feedback {
+	font-family: 'Josefin Sans', sans-serif;
+    font-size: 1.4em;
+	color: #fb8500;
+	background: #000000;
+}

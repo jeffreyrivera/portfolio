@@ -11,11 +11,11 @@ class Projects extends React.Component {
         currentProject: 'Latest Project', currentKeywords : null,  currentFile :null, 
         projects : [['Latest Project', 'latestProject.md', ['Code', 'Algorithm', 'Interview', 'Preparation', 'Python','React JS']],
                 ['Software Developer', 'software.md', ['Python', 'Data Science', 'Java', 'Full Stack', 'Web','Solutions']],
-                ['Sales Consultant', 'sales.md', ['Customer', 'Sales', 'Persuasive', 'Teamwork', 'Results','Mentor']]]
+                ['Sales Consultant', 'sales.md', ['Customer', 'Sales', 'Persuasive', 'Teamwork', 'Results','Mentor','E-commerce']]]
     }
 
     componentDidMount(){
-        this.setData('Latest Project');
+        this.setData('Software Developer');
     }
 
     setData = (currentProject) => {
@@ -50,7 +50,7 @@ class Projects extends React.Component {
                             onProjectSelect={this.onProjectSelect}
                         />
                         <RenderContentMarkDown
-                            current={this.state.currentProject}
+                            title={this.state.currentProject}
                             file={this.state.currentFile}
                         />
                     </div>

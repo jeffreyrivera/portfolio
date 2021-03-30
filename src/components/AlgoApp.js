@@ -209,10 +209,7 @@ class AlgoApp extends React.Component {
 
     render() {
         return (
-            <div className="App">
-                <div className="four column row spacing">
-
-                </div>
+            <div id="App">
                 <div className="ui container grid">
                     <div className="sixteen wide column category">
                         <QuestionsMenu  
@@ -236,6 +233,8 @@ class AlgoApp extends React.Component {
                 </div>
                 <div className="ui container grid">
                     {this.renderDifferentViews(this.state.currentView)}
+                </div>
+                <div className="four column row spacing footer">
                 </div>
             </div>
         );
