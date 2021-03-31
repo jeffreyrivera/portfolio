@@ -23,7 +23,7 @@ class Projects extends React.Component {
         const current = this.state.projects.find((project) => {
             return currentProject === project[0]
         })
-        console.log(current);
+        // console.log(current);
         this.setState({
             currentProject: currentProject,
             currentKeywords: current[2],
@@ -61,7 +61,7 @@ class Projects extends React.Component {
 
     render () {
         return(
-            <div className="ui grid projects">
+            <div className="ui grid projects" id="projects">
                 <div className="ui grid inner">
                     {this.renderContent()}
                 </div>

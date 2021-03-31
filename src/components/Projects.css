@@ -25,7 +25,7 @@
     
 }
 .ui.grid>.three.column.row>.column.project-keywords{
-    margin-top: 3.7em;
+    margin-top: 3.75em;
     width: 400px!important;
     margin-left: auto;
 }
@@ -103,10 +103,7 @@
     padding: .92857143em 1.42857143em;
     color: rgba(0,0,0,.87);
 }
-.four.column.row.spacing {
-    min-height: 250px;
-	height: 20vh;
-}
+
 
 /* .two.column.row.content{ */
 .ui.internally.celled.grid{

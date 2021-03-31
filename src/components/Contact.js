@@ -1,5 +1,5 @@
 import React from 'react';
-// import ContactForm from './ContactForm';
+import Footer from './Footer';
 import ContactHook from './ContactHook';
 import RenderContentMarkDown from './RenderContentMarkDown';
 import './Contact.css';
@@ -23,6 +23,7 @@ const Contact = () => {
                     </div>
                 </div>
             </div>
+            <Footer />
         </div>
     );
 };

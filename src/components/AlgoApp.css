@@ -8,11 +8,12 @@
 #root {
     border-left: .5em #ffcc00 solid;
     border-right: .5em #ffcc00 solid;
+    /* background: #023047;  */
 }
 body{
     font-family: 'Josefin Sans', sans-serif;
-    background: #023047;
     color:white;
+    background: #023047; 
 }
 h1  {
     font-family: 'Josefin Sans', sans-serif;
@@ -20,6 +21,10 @@ h1  {
     margin: calc(2rem - .14285714em) 0 1rem;
     font-weight: 700;
     padding: 0;
+}
+a {
+    color: #3399cc;
+    text-decoration: none;
 }
 
 .ui.segment {

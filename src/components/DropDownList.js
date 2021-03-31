@@ -18,7 +18,7 @@ class DropDownList extends React.Component {
     }
 
     handleButtonClick = () => {
-        console.log("click")
+        
         this.setState({
             open: !this.state.open
         })

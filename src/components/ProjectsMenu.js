@@ -3,7 +3,7 @@ import React from 'react'
 const ProjectsMenu = ({projects, current, onProjectSelect}) =>{
     
     const returnCurrent = (project) => {
-        console.log(project,current)
+        // console.log(project,current)
         return (project === current) ?'active ' : '';
     };
 

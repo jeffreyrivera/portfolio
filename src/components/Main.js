@@ -1,7 +1,7 @@
 import React from "react";
 import './Main.css'
 import portrait from '../assets/portrait.jpg';
-import arrow from '../assets/arrow.png';
+
 
 const Main = () => {
 
