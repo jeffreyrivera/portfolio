@@ -6,7 +6,7 @@ class CodeDisplay extends React.Component {
     state = { answerFile: '' }
 
     componentDidMount() {
-        //this.loadCode(this.props.file);
+        this.loadCode(this.props.file);
     }
 
     loadCode = async (code) => {
@@ -19,9 +19,9 @@ class CodeDisplay extends React.Component {
         });
     }
 
-    componentDidUpdate(prevState) {
+    componentDidUpdate(prevProps) {
         // check whether client has changed
-        if (prevState.answerFile !== this.state.answerFile) {
+        if (prevProps.file !== this.props.file) {
             this.loadCode(this.props.file);
         }
     }

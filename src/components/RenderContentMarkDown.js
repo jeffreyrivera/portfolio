@@ -10,8 +10,7 @@ class RenderContentMarkDown extends React.Component {
 
     loadCode = async (urlFile) => {
         const file = await import(`../assets/projects/${urlFile}`);
-        const response = await fetch(file.default);
-        const text = await response.text();
+        const text = await fetch(file.default).then(response => response.text());
 
         this.setState({
             projectFile: text,
@@ -19,9 +18,9 @@ class RenderContentMarkDown extends React.Component {
         });
     }
 
-    componentDidUpdate(prevState) {
+    componentDidUpdate(prevProps) {
         // check whether client has changed
-        if (prevState.projectFile !== this.state.projectFile) {
+        if (prevProps.file !== this.props.file) {
             this.loadCode(this.props.file);
         }
     }

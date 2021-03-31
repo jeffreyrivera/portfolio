@@ -99,7 +99,7 @@ class AlgoApp extends React.Component {
             
 
         } else {
-            console.log('Same Question Selected');
+            //console.log('Same Question Selected');
         }
         //TODO load appropiate questions array from API and update current questions state
     };
@@ -126,7 +126,7 @@ class AlgoApp extends React.Component {
             this.updateChild();
 
         } else {
-            console.log('Same Solution Selected');
+            //console.log('Same Solution Selected');
         }
         //TODO load appropiate questions array from API and update current questions state
     };
@@ -137,7 +137,7 @@ class AlgoApp extends React.Component {
         if (category !== this.state.categorySelected){
             this.setState( { categorySelected: category });
         } else {
-            console.log('Same Category Selected');
+            //console.log('Same Category Selected');
         }
         //TODO load appropiate questions array from API and update current questions state
     };
