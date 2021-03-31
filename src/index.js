@@ -5,9 +5,8 @@ import AlgoApp from './components/AlgoApp';
 import Main from "./components/Main";
 import Projects from "./components/Projects";
 import Contact from "./components/Contact";
-// import Notfound from "./notfound";
 import Header from "./components/Header";
-import Footer from "./components/Footer";
+
 
 
 const routing = (
