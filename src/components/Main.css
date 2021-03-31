@@ -60,6 +60,12 @@
 }
 .four.column.row.spacing.footer {
     height: 100px;
+    background: #ffcc00;
+}
+.four.column.row.spacing.projects {
+    height: 100px;
+    background: #ffcc00;
+    margin-bottom: 2em;
 }
 
 .arrowMenu {
@@ -174,11 +180,17 @@
         width:0;
     }
     .four.column.row.spacing.main {
-        min-height: 200px;
+        height: 100px;
         margin-left: 10px;
         border-left: none;
     }
     .four.column.row.spacing.footer {
         border-left: none;
+        height: 50px;
+    }
+    .four.column.row.spacing.projects {
+        height: 50px;
+        border-left: none;
+
     }
 }

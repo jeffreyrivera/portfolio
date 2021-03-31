@@ -65,7 +65,7 @@ class Projects extends React.Component {
                 <div className="ui grid inner">
                     {this.renderContent()}
                 </div>
-                <div className="four column row spacing main">
+                <div className="four column row spacing projects">
                 </div>
             </div>
 
