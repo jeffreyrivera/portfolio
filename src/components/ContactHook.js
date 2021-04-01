@@ -53,8 +53,8 @@ const ContactForm = () => {
     return (      
         <div>
         <form className="form" onSubmit={handleSubmit(onSubmit)} noValidate>
-            <h3>Feel free to fill out this quick contact form</h3>
             <div>
+                <h1>Contact me</h1>
             <label htmlFor="name">Name:</label>
             <input
                 type='text'

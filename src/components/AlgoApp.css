@@ -150,7 +150,16 @@ a {
 .codeDisplay pre {
     min-height: 450px;
 }
-@media only screen and (max-width: 781px) {
+@media only screen and (max-width: 900px) {
+    #root {
+        border: none;
+    }
+    .ui.segment.question{
+        padding-right: .5em;
+    }
+
+}
+@media only screen and (max-width: 768px) {
     #root {
         border: none;
     }
@@ -175,9 +184,4 @@ a {
         margin-left: 1em!important;
     }
 }
-
-/* // after body element, add the code below. It means the ID #fonts in body element will apply this specific style. */
-
-/* font-family: 'Josefin Sans', sans-serif;
-font-family: 'Ubuntu', sans-serif; */
 

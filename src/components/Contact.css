@@ -4,20 +4,20 @@ input, textarea {
 	font-size: inherit;
 }
 input[type=text],input[type=email] {
-	width:90%;
+	width:100%;
 	background: #ffefb1;
 	padding: 1em;
-	margin: 1em;
+	margin: 1em 0em;
 	border: 1px solid rgba(34,36,38,.15);
 	box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
 	border-radius:10px;
 }
 textarea {
 	background: #ffefb1;
-	width:90%;
+	width:100%;
 	resize: vertical;
 	padding:1em;
-	margin: 1em;
+	margin: 1em 0em;;
 	border-radius:15px;
 	border: 1px solid rgba(34,36,38,.15);
 	box-shadow:4px 4px 10px rgba(0,0,0,0.06);
@@ -26,7 +26,6 @@ textarea {
 }
 label {
 	position: relative; /* to contain absolute elements */
-	padding-left:1em; /* free space for custom checkbox */
 	padding-right:5em;
 	cursor: pointer;
 }
@@ -37,7 +36,6 @@ label {
 	appearance:none;
 	-webkit-appearance:none;
 	/* usual styles */
-    margin: 1em; 
     font-family: 'Josefin Sans', sans-serif;
     font-size: 1.2em;
     font-weight: 700;
@@ -48,9 +46,9 @@ label {
     border: 1px solid rgba(34,36,38,.15);
     border-radius: .28571429rem;
     box-shadow: 0 1px 2px 0 rgb(34 36 38 / 15%);
-    position: relative;
-	float: right;
-    margin-right: 2em;
+    float: right;
+	margin-bottom: 1em;
+	
   }
 .column.contact h3{
 	position: relative;

@@ -15,6 +15,9 @@ const Header = () => {
 
   return (
     <div className="ui grid headerPart" id="header">
+        
+
+
         <div className="four column row">
             <div className="left floated column logo">
                 <div className="logoLink">

@@ -10,4 +10,9 @@
     background-color: #ffcc00;
 }
 
-/* @media only screen and (max-width: 781px)  */
+@media only screen and (max-width: 768px) {
+    .four.column.row.spacing.footer {
+        border-left: none;
+        height: 50px;
+    }
+}

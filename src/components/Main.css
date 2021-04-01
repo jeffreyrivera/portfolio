@@ -60,7 +60,8 @@
 }
 .four.column.row.spacing.footer {
     height: 100px;
-    background: #ffcc00;
+    
+    width: 100%;
 }
 .four.column.row.spacing.projects {
     height: 100px;
@@ -157,18 +158,28 @@
     color : #ffcc00;
 }
 
-/* @media only screen and (max-width: 955px) {
-    .arrowMenu {
-        height: 0%;
+@media only screen and (max-width: 900px) {
+    .heading {
+        width: 360px;
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: .5em;
     }
-} */
-@media only screen and (max-width: 781px) {
+    .portraitDisplay {
+        margin-top: 3em;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+
     .heading {
         margin-left: auto;
         margin-right: auto;
         padding-left: .5em;
     }
     .portraitDisplay {
+        width: 360px;
+        height: 365px;
         margin-top: 3em;
         margin-left: auto;
         margin-right: auto;
@@ -184,13 +195,29 @@
         margin-left: 10px;
         border-left: none;
     }
-    .four.column.row.spacing.footer {
-        border-left: none;
-        height: 50px;
-    }
+    
     .four.column.row.spacing.projects {
         height: 50px;
         border-left: none;
 
+    }
+    .heading h1{
+        font-size: 3.5em;
+        text-align: left;
+        text-justify: auto;
+        letter-spacing: -2px;
+    }
+}
+
+@media only screen and (max-width: 481px) {
+    .portraitDisplay {
+        width: 300px;
+        height: 305px;
+    }
+    .heading {
+        width: 300px;
+    }
+    .heading h1{
+        font-size: 3em;
     }
 }

@@ -17,7 +17,7 @@ const Contact = () => {
                         />
                     </div>
                     <div className="column project-contents contact">
-                        <div className="column">
+                        <div className="column project-keywords contact-hook">
                             <ContactHook />
                         </div>
                     </div>

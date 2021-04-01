@@ -51,6 +51,7 @@
     margin-inline-end: 0px;
     padding-left: 0;
 }
+
 .ui.grid>.three.column.row>.column.project-contents{
     background-color: #000000;
     width: 480px!important;
@@ -61,16 +62,26 @@
 
 .ui.grid>.three.column.row>.column.project-keywords.contact.aboutme>.column.project-content{
     width: 100%!important;
+    
 }
 
 .column.project-content {
     background-color: #000000;
     width: 480px;
     overflow: hidden;
-    padding-left: 1.5em;
-    padding-right: 1.5em;
+    padding-left: 1em;
+    padding-right: 1em;
+    
     
 }
+.column.project-keywords.contact-hook {
+    padding: 1em;
+}
+.column.project-keywords.contact.aboutme{
+    padding-left: 0;
+    padding-right: 0;
+}
+
 .column.project-content h2{
     color: #ffcc00;
     
@@ -85,45 +96,6 @@
 .column.project-keywords p:last-child {
     margin-bottom: 1.5em;
 }
-
-/* @media only screen and (max-width: 781px){
-
-
-
-}
-
-.ui.vertical.menu.questionList {
-    width: auto!important;
-    margin-bottom: 3em!important;
-    margin-right: 1em;
-}
-.ui.menu.vertical {
-    background: #8ecae6;
-    width: auto;
-}
-
-.ui.vertical.menu {
-    width: 15rem;
-}
-.ui.vertical.menu {
-    display: block;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    background: #fff;
-    -webkit-box-shadow: 0 1px 2px 0 rgb(34 36 38 / 15%);
-    box-shadow: 0 1px 2px 0 rgb(34 36 38 / 15%);
-    .ui.vertical.menu .item {
-        display: block;
-        background: 0 0;
-        border-top: none;
-        border-right: none;
-
-
-        margin-top: 5em!important;
-        margin-right: 1em;
-        width: auto!important; */
 
 .ui.tabular.menu.latest {
     background-color: #ffcc00;
@@ -166,15 +138,26 @@
     margin-inline-end: 0px;
     padding-left: 0;
 }
+/* // Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) { ... }
 
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) { ... }
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) { ... }
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) { ... } */
 
 @media only screen and (max-width: 920px) {
     .project-keywords h1{
-        font-size: 3.5em;
+        font-size: 3em;
         letter-spacing: -6px;
     }
+    
     .ui.grid>.three.column.row>.column.project-keywords{
-        width: 270px!important;
+        width: 240px!important;
     }
     .ui.grid>.three.column.row>.column.project-keywords.contact{
         width: 100%!important;
@@ -185,7 +168,7 @@
 
     }
 
-}@media only screen and (max-width: 781px) {
+}@media only screen and (max-width: 768px) {
     .ui.grid {
         margin-left: 0rem;
         margin-right: 0rem;
@@ -202,6 +185,15 @@
         width: 100%!important;
     }
 
+    .ui.grid>.stackable.stackable.row>.column, 
+    .ui.stackable.grid>.column.grid>.column, 
+    .ui.stackable.grid>.column.row>.column, 
+    .ui.stackable.grid>.column:not(.row), 
+    .ui.stackable.grid>.row>.column, 
+    .ui.stackable.grid>.row>.wide.column, 
+    .ui.stackable.grid>.wide.column {
+        padding: 1rem 1rem!important;
+    }
     .three.column.stackable.row.projects {
         margin-bottom: auto;
     }
@@ -212,9 +204,12 @@
     }
     .column.project-content{
         width: 100%;
-        padding-left: .5em;
-        padding-right: .5em;
+        padding-left: 0;
+        padding-right: 0;
         
+    }
+    .column.project-keywords.contact-hook {
+        padding: 0;
     }
 
 

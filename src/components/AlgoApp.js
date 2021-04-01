@@ -23,7 +23,7 @@ class AlgoApp extends React.Component {
     }
 
     resize = () => {
-        if (window.innerWidth <= 760){
+        if (window.innerWidth <= 768){
             this.setState({
                 menuType: 'vertical'
             });
